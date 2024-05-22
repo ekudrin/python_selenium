@@ -19,4 +19,4 @@ class CheckboxPage(BasePage):
 
     def check_selected_checkboxes(self, checkbox_list):
         for element in checkbox_list:
-            assert element.is_selected()
+            assert element.is_selected(), "Checkboxes is not selected correctly"
