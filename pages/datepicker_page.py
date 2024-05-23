@@ -3,26 +3,14 @@ import random
 from locators.datepicker_page_locators import DatepickerPageLocators
 from pages.base_page import BasePage
 import calendar
+from data.data import Data
 
 
 class DatepickerPage(BasePage):
     locators = DatepickerPageLocators()
 
     def select_date(self):
-        month_dict = {
-            '01': "Jan",
-            '02': "Feb",
-            '03': "Mar",
-            '04': "Apr",
-            '05': "May",
-            '06': "Jun",
-            '07': "Jul",
-            '08': "Aug",
-            '09': "Sep",
-            '10': "Oct",
-            '11': "Nov",
-            '12': "Dec"
-        }
+        month_dict = Data.month_dict
 
         self.element_is_visible(self.locators.DATEPICKER_INPUT).click()
         self.element_is_visible(self.locators.MONTH_SELECTOR).click()
@@ -45,7 +33,7 @@ class DatepickerPage(BasePage):
         selected_day = days_list[random.randint(0, len(days_list) - 1)]
         day_text = selected_day.text
         if len(day_text) == 1:
-            day_text.zfill(2)
+            day_text = day_text.zfill(2)
         selected_day.click()
 
         return month_text, day_text, year_text,
