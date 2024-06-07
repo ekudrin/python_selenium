@@ -1,4 +1,5 @@
 import random
+import string
 from pathlib import Path
 
 
@@ -9,5 +10,10 @@ def generated_file():
     file.write('Test string for file ')
     file.close()
     return file.name, path
+
+
+def generated_string():
+    test_string = (''.join(random.choices(string.ascii_lowercase, k=5)))
+    return test_string
 
 
