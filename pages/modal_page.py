@@ -1,3 +1,5 @@
+import time
+
 from locators.modal_page_locators import ModalPageLocators
 from pages.base_page import BasePage
 
@@ -12,5 +14,7 @@ class ModalPage(BasePage):
 
     def check_close_button(self):
         self.element_is_visible(self.locators.OPEN_BUTTON).click()
+        modal_window = self.element_is_visible(self.locators.MODAL_WINDOW)
         self.element_is_visible(self.locators.CLOSE_BUTTON).click()
-        assert self.element_is_not_visible(self.locators.MODAL_WINDOW)
+        time.sleep(1)
+        assert not modal_window.is_displayed()
