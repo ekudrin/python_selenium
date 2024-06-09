@@ -1,3 +1,5 @@
+import allure
+
 from locators.dropdown_page_locators import DropDownPageLocators
 from pages.base_page import BasePage
 import random
@@ -8,6 +10,7 @@ from data.data import Data
 class DropdownPage(BasePage):
     locators = DropDownPageLocators()
 
+    @allure.step("Select item from dropdown")
     def select_dropdown_item(self):
         self.element_is_visible(self.locators.DROPDOWN_BUTTON).click()
         item_list = self.elements_are_visible(self.locators.DROPDOWN_ITEM_LIST)
@@ -16,6 +19,7 @@ class DropdownPage(BasePage):
         item_to_click.click()
         return item_text
 
+    @allure.step("Check opened link")
     def check_open_link(self, item):
         open_tab_text = re.split('/', self.driver.current_url)[-1]
         item_name = Data.dropdown_menu.get(item)

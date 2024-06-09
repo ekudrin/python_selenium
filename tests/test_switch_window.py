@@ -1,13 +1,18 @@
-from pages.test_switch_window_page import SwitchWindowPage
+import allure
+
+from pages.switch_window_page import SwitchWindowPage
 
 
-def test_switch_tab(driver):
-    switch_page = SwitchWindowPage(driver, "https://formy-project.herokuapp.com/switch-window")
-    switch_page.open()
-    switch_page.check_new_tab_url()
+@allure.feature("Switch Window")
+class TestSwitchWindow:
+    @allure.title("Open new tab")
+    def test_switch_tab(self, driver):
+        switch_page = SwitchWindowPage(driver, "https://formy-project.herokuapp.com/switch-window")
+        switch_page.open()
+        switch_page.check_new_tab_url()
 
-
-def test_alert(driver):
-    switch_page = SwitchWindowPage(driver, "https://formy-project.herokuapp.com/switch-window")
-    switch_page.open()
-    switch_page.check_alert_text()
+    @allure.title("Open alert")
+    def test_alert(self, driver):
+        switch_page = SwitchWindowPage(driver, "https://formy-project.herokuapp.com/switch-window")
+        switch_page.open()
+        switch_page.check_alert_text()

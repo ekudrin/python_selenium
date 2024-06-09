@@ -1,5 +1,7 @@
 import random
 
+import allure
+
 from generator.generator import generated_person
 from locators.webform_page_locators import WebFormPageLocators
 from pages.base_page import BasePage
@@ -8,6 +10,7 @@ from pages.base_page import BasePage
 class WebFormPage(BasePage):
     locators = WebFormPageLocators()
 
+    @allure.step("Fill form fields")
     def fill_form(self):
         person_info = next(generated_person())
         # fill person info
@@ -34,6 +37,7 @@ class WebFormPage(BasePage):
 
         self.element_is_visible(self.locators.SUBMIT).click()
 
+    @allure.step("Check success screen message")
     def check_success_message(self):
         url = self.driver.current_url
         text_message = self.element_is_visible(self.locators.SUCCESS_MESSAGE).text

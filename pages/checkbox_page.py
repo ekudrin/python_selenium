@@ -1,5 +1,7 @@
 import random
 
+import allure
+
 from locators.checkbox_page_locators import CheckboxPageLocators
 from pages.base_page import BasePage
 
@@ -7,6 +9,7 @@ from pages.base_page import BasePage
 class CheckboxPage(BasePage):
     locators = CheckboxPageLocators()
 
+    @allure.step('select checkbox')
     def select_checkboxes(self):
         checkbox_list = self.elements_are_visible(self.locators.ALL_CHECKBOX)
         random.shuffle(checkbox_list)
@@ -17,6 +20,7 @@ class CheckboxPage(BasePage):
             selected_checkboxes.append(checkbox_list[i])
         return selected_checkboxes
 
+    @allure.step('check which checkbox is selected')
     def check_selected_checkboxes(self, checkbox_list):
         for element in checkbox_list:
-            assert element.is_selected(), "Checkboxes is not selected correctly"
+            assert element.is_selected(), "Checkboxes are not selected correctly"

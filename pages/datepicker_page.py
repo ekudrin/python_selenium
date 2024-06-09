@@ -1,5 +1,7 @@
 import random
 
+import allure
+
 from locators.datepicker_page_locators import DatepickerPageLocators
 from pages.base_page import BasePage
 import calendar
@@ -9,6 +11,7 @@ from data.data import Data
 class DatepickerPage(BasePage):
     locators = DatepickerPageLocators()
 
+    @allure.step("Select date from datepicker")
     def select_date(self):
         month_dict = Data.month_dict
 
@@ -38,6 +41,7 @@ class DatepickerPage(BasePage):
 
         return month_text, day_text, year_text,
 
+    @allure.step("Check date in field")
     def check_date(self, date):
         input_text = self.element_is_visible(self.locators.DATEPICKER_INPUT).get_attribute('value')
         date_value = "{}/{}/{}".format(date[0], date[1], date[2])

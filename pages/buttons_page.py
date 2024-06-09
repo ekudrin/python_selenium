@@ -1,3 +1,5 @@
+import allure
+
 from locators.buttons_page_locators import ButtonsPageLocators
 from pages.base_page import BasePage
 
@@ -5,6 +7,7 @@ from pages.base_page import BasePage
 class ButtonsPage(BasePage):
     locators = ButtonsPageLocators()
 
+    @allure.step("Check all buttons enabled")
     def check_all_buttons_clickable(self):
         assert self.element_is_visible(self.locators.PRIMARY_BUTTON).is_enabled(), "Primary button is not enabled"
         assert self.element_is_visible(self.locators.SUCCESS_BUTTON).is_enabled(), "Success button is not enabled"
@@ -19,6 +22,7 @@ class ButtonsPage(BasePage):
         assert self.element_is_visible(self.locators.SECOND_BUTTON).is_enabled(), "Second button is not enabled"
         assert self.element_is_visible(self.locators.DROPDOWN_BUTTON).is_enabled(), "Dropdown button is not enabled"
 
+    @allure.step("Check dropdown is present")
     def check_dropdown_items_are_present(self):
         self.element_is_visible(self.locators.DROPDOWN_BUTTON).click()
 

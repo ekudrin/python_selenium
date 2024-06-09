@@ -10,7 +10,7 @@ class Data:
         "Drag and Drop": "dragdrop",
         "Dropdown": "dropdown",
         "Enabled and disbled elements": "enabled",
-        "File upload": "fileupload",
+        "File Upload": "fileupload",
         "Key and Mouse Press": "keypress",
         "Modal": "modal",
         "Page Scroll": "scroll",
