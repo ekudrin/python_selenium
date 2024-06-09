@@ -1,3 +1,6 @@
+from dataclasses import dataclass
+
+
 class Data:
     dropdown_menu = {
         "Autocomplete": "autocomplete",
@@ -30,3 +33,10 @@ class Data:
         '11': "Nov",
         '12': "Dec"
     }
+
+
+@dataclass
+class Person:
+    first_name: str = None
+    last_name: str = None
+    job_title: str = None
